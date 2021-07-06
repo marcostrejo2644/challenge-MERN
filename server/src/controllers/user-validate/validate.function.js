@@ -1,7 +1,7 @@
 module.exports = (schema) => {
   return async (req, res, next) => {
     try {
-      const test = await schema.validateAsync(req.body);
+      await schema.validateAsync(req.body);
       next();
     } catch (error) {
       if (error.isJoi == true) {

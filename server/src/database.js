@@ -1,11 +1,14 @@
 const mongoose = require('mongoose');
 require('dotenv').config();
 
+const { DB_MONGO_URI, DB_MONGO_URI_TEST, NODE_ENV } = process.env;
+const dbUri = NODE_ENV === 'test' ? DB_MONGO_URI_TEST : DB_MONGO_URI;
+
 mongoose
-  .connect(
-    `mongodb+srv://marcos2644:${process.env.DB_PASSWORD}@cluster0.9uzdv.mongodb.net/pruebaTecnica?retryWrites=true&w=majority`,
-    { useNewUrlParser: true, useUnifiedTopology: true }
-  )
+  .connect(dbUri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then((db) => console.log(`Database connected`))
   .catch((e) => console.log(e));
 

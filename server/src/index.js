@@ -17,8 +17,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api/users/', require(path.join(__dirname, 'routes', 'user.route')));
 
 // Server ON
-app.listen(app.get('port'), () => {
+const server = app.listen(app.get('port'), () => {
   console.log(`App ready on http://localhost:${app.get('port')}`);
 });
 
-module.exports = { app };
+module.exports = { app, server };
