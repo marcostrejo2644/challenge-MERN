@@ -6,6 +6,8 @@ const User = require('../src/models/user.model');
 
 const api = supertest(app);
 
+let token;
+
 beforeEach(async () => {
   await User.deleteMany({});
   for (let u in users) {
@@ -14,6 +16,13 @@ beforeEach(async () => {
     newUser.password = await newUser.encryptPassword(user.password);
     await newUser.save();
   }
+  await api
+    .post('/api/login/')
+    .send({ email: 'luchi98@hotmail.com', password: 'lu28s@dsa' })
+    .expect(202)
+    .expect(function (res) {
+      token = res.body.token;
+    });
 });
 
 describe('Verificando ruta de /add-user', () => {
@@ -55,26 +64,21 @@ describe('Verificando ruta de /add-user', () => {
   });
 });
 
-describe('Verificando ruta de /add-user', () => {
-  let token;
+describe('Verificando ruta de login', () => {
   test('Login', async () => {
     const user = {
       email: 'luchi98@hotmail.com',
       password: 'lu28s@dsa',
     };
     await api
-      .post('/api/users/login')
+      .post('/api/login/')
       .send(user)
       .expect(202)
-      .expect('Content-Type', /application\/json/)
-      .expect(function (res) {
-        token = res.body.token;
-      });
+      .expect('Content-Type', /application\/json/);
   });
   test('authenticate', async () => {
-    console.log(token);
     await api
-      .post('/api/users/auth')
+      .post('/api/login/auth')
       .set('Authorization', `Bearer ${token}`)
       .expect(200)
       .expect('Content-Type', /application\/json/);

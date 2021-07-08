@@ -1,0 +1,8 @@
+.app {
+  background-image: url('https://source.unsplash.com/random');
+  background-repeat: 'no-repeat';
+  background-color: rgba(0, 0, 0, 0.8);
+  background-size: 'cover';
+  height: 100vh;
+  width: 100vw;
+}

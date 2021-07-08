@@ -1,27 +1,9 @@
-const userController = {};
+const userService = {};
 const jwt = require('jsonwebtoken');
 const User = require('../models/user.model');
 require('dotenv').config();
 
-userController.addUser = async (req, res) => {
-  try {
-    const { username, email, password } = req.body;
-    const verifyMail = await User.findOne({ email });
-    if (verifyMail)
-      res.status(400).json({ message: 'El email ya esta en uso' });
-    else {
-      const newUser = new User({ username, email, password });
-      newUser.password = await newUser.encryptPassword(password);
-      await newUser.save();
-      res.status(201).json({ message: 'user added succesfully', newUser });
-    }
-  } catch (error) {
-    console.log(error);
-    res.status(400).json({ message: 'Ops algo salio mal' });
-  }
-};
-
-userController.logIn = async (req, res) => {
+userService.logIn = async (req, res) => {
   try {
     const { email, password } = req.body;
     const userDB = await User.findOne({ email });
@@ -45,7 +27,7 @@ userController.logIn = async (req, res) => {
   }
 };
 
-userController.authenticate = async (req, res) => {
+userService.authenticate = async (req, res) => {
   try {
     res.status(200).json({ message: 'Usuario validado correctamente' });
   } catch (error) {
@@ -53,4 +35,4 @@ userController.authenticate = async (req, res) => {
   }
 };
 
-module.exports = userController;
+module.exports = userService;
