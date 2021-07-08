@@ -2,7 +2,7 @@
 
 **_Language_**
 
-- 🇪🇸 Español(./README.es.md)
+- 🇪🇸 Español
 - [🇺🇸 English](./README.en.md)
 
 ## Instalando
