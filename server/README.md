@@ -2,7 +2,7 @@
 
 **_Language_**
 
-- [🇪🇸 Español](./README.es.md)
+- [🇪🇸 Español](./README.md)
 - 🇺🇸 English
 
 ## Installing
@@ -15,11 +15,15 @@ Then set your file .env you can find and example of how to set it
 
 ## Run the app
 
-#### To run the app:
+#### To run the app(includes the front):
+
+### `npm run startApp`
+
+#### To run only back:
 
 ### `npm start`
 
-#### To run the app in develpment mode. This uses port 4000
+#### To run the app in develpment mode
 
 ### `npm run dev`
 

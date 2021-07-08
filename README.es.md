@@ -3,26 +3,20 @@
 **_Language_**
 
 - 🇪🇸 Español(./README.es.md)
-- [🇺🇸 English](./README.md)
+- [🇺🇸 English](./README.en.md)
 
 ## Instalando
 
-En este directorio ejecutar:
+Se puede correr toda la app con un comando, para hacerlo entrar al directorio de server, crear el .env(hay un env.example) y luego correr el siguiente comando.
+
+### `npm run startApp`
+
+## Si se quiere hacer manual
+
+Ingresar a client y app, y ejecutar en cada uno:
 
 ### `npm install`
 
-Luego debes crear tu .env, en este mismo directorio podras encontrar un env.example que te mostrara como setearlo correctamente
-
-## Correr la app
-
-#### Ejecutar la app:
+Y luego en /client ejecutar:
 
 ### `npm start`
-
-#### Ejecutar en modo desarrollo, utiliza el puerto 4000 por defecto
-
-### `npm run dev`
-
-#### Iniciar los tests
-
-### `npm run test`
